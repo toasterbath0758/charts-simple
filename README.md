@@ -8,28 +8,14 @@ If you're seeing this, you've probably already done this step. Congrats!
 
 ```sh
 # create a new project
-npx sv create my-app
+npx sv create
 ```
 
 To recreate this project with the same configuration:
 
 ```sh
 # recreate this project
-npx sv@1.1.1 create --template minimal --no-types --install npm ./
-```
-
-## Adding features
-
-Add features to your project with `sv add`:
-
-```sh
-npx sv add
-```
-
-For example, to add Tailwind CSS:
-
-```sh
-npx sv add tailwindcss
+npx sv@0.17.1 create --template minimal --no-types --install npm ./
 ```
 
 ## Developing
@@ -53,4 +39,16 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Chart.js 
+
+to use chart.js you have to install it first:
+
+```sh
+npm install chart.js
+```
+otherwise the charts wont work
+
+## Deploy
+
+To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
