@@ -1,6 +1,6 @@
-<script lang="ts">
+<script>
   import Chart from 'chart.js/auto'
-    import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
 
   let {
     title,
@@ -10,10 +10,10 @@
     onReload,
   } = $props()
 
-  let canvas: HTMLCanvasElement | null = $state(null)
-  let chart: Chart | null = null
+  let canvas = $state(null)
+  let chart = null
 
-    onMount(() => {
+  onMount(() => {
     if (canvas) {
       chart = new Chart(canvas, {
         type: 'bar',
