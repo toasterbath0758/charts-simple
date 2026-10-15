@@ -1,6 +1,5 @@
 <script>
   import Chart from 'chart.js/auto'
-  import { onMount } from 'svelte';
 
   let {
     title,
@@ -10,45 +9,31 @@
     onReload,
   } = $props()
 
-  let canvas = $state(null)
-  let chart = null
-
-  onMount(() => {
-    if (canvas) {
-      chart = new Chart(canvas, {
-        type: 'bar',
-        data: { labels: [], datasets: [] }
-      })
-    }
-
-    return () => {
-      chart?.destroy()
-      chart = null
-    }
-  })
+  let canvas = $state()
 
   $effect(() => {
-    if (!chart) {
-      return
-    }
-    chart.data = {
-      labels: $state.snapshot(chartLabels),
-      datasets: [{
-        label: dataLabel,
-        data: $state.snapshot(chartData),
-        backgroundColor: [
-        'hsl(257, 89%, 74%)',
-        'hsl(195, 100%, 45%)',
-        'hsl(167, 52%, 51%)',
-        'hsl(25, 86%, 66%)',
-        'hsl(318, 79%, 70%)'
-        ]
-      }]
-    }
+    if (!canvas) return
 
-    chart.update()
+    const chart = new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: $state.snapshot(chartLabels),
+        datasets: [{
+          label: dataLabel,
+          data: $state.snapshot(chartData),
+          backgroundColor: [
+            'hsl(257, 89%, 74%)',
+            'hsl(195, 100%, 45%)',
+            'hsl(167, 52%, 51%)',
+            'hsl(25, 86%, 66%)',
+            'hsl(318, 79%, 70%)'
+          ]
+        }]
+      }
+    })
+
+    return () => chart.destroy()
   })
-
 </script>
 
 
