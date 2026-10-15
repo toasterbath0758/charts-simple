@@ -15,7 +15,7 @@
     if (!canvas) return
 
     const chart = new Chart(canvas, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: $state.snapshot(chartLabels),
         datasets: [{

@@ -1,9 +1,8 @@
 <script>
   import LineChart from '../lib/components/LineChart.svelte'
   import PieChart from '../lib/components/PieChart.svelte'
+  import BarChart from '../lib/components/BarChart.svelte'
   import FakeNavbar from '../lib/components/FakeNavbar.svelte'
-
-  let { data } = $props() // data uit +page.server.js
 
   // --- Chart 1 ---
   const months = ['January', 'February', 'March', 'April', 'May']
@@ -40,7 +39,7 @@
 
 <ul class="grid">
   <li class="graphs">
-    <LineChart title="Line Chart" chartLabels={months} chartData={staticData1} dataLabel="Data 1" onReload={loadChart1} />
+    <BarChart title="Bar Chart" chartLabels={months} chartData={staticData1} dataLabel="Data 1" onReload={loadChart1} />
   </li>
   <li class="graphs">
     <PieChart title="Pie Chart" chartLabels={colors} chartData={staticData2} dataLabel="Data 2" onReload={loadChart2} />
